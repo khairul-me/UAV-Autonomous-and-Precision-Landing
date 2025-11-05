@@ -1,5 +1,7 @@
 # UAV Synthetic Data Research with Microsoft AirSim
 
+> **Note**: This branch (`airsim-comprehensive-flight`) focuses on AirSim synthetic data generation and autonomous flight research. The `main` branch contains the Autonomous Drone Delivery System project. Both are separate research efforts under the same repository.
+
 Research project for generating large-scale synthetic training datasets using Microsoft AirSim for autonomous UAV systems.
 
 ## Project Overview
@@ -74,33 +76,54 @@ E:\Drone\
 
 ## Research Phases
 
-### Phase 1: Installation & Validation (Weeks 1-2)
-- ✅ AirSim installation
-- ✅ Unreal Engine 4.27 setup
-- ✅ Python environment configuration
-- ✅ Pipeline validation
+### Phase 0: AirSim Foundation Setup (COMPLETE ✅)
+- ✅ AirSim installation and configuration
+- ✅ Multi-sensor data capture (RGB, Depth, Segmentation, IMU, GPS, Magnetometer, Barometer)
+- ✅ Comprehensive data logging system
+- ✅ Autonomous flight patterns
+- ✅ Real-time video recording
 
-### Phase 2: Procedural Generation (Weeks 3-6)
-- Implement domain randomization
-- Develop procedural environment generation
-- Create data collection pipeline
+### Phase 1: Baseline Navigation System (In Progress)
+- Manual control and data collection
+- Vision-based object detection
+- Classical navigation controller
+- Deep RL navigation agent (optional)
 
-### Phase 3: Methodology & Publication (Weeks 7-12)
-- Novel methodology development
-- Dataset generation (100K+ images)
-- Paper submission (ICRA/IROS)
-- Open-source framework release
+### Phase 2: Adversarial Attack Implementation
+- Digital attack generation (FGSM, PGD, C&W, UAP)
+- Physical adversarial patch generation
+- Multi-modal attacks
+- Adaptive attacks
+
+### Phase 3: Defense Implementation
+- Input-level defenses
+- Model-level defenses
+- Multi-sensor fusion (key innovation)
+- Behavioral defenses
 
 ## Key Features
 
 - **Synthetic Data Generation**: Automated dataset creation with depth/segmentation
+- **Multi-Sensor Capture**: RGB, Depth, Segmentation, IMU, GPS, Magnetometer, Barometer
+- **Comprehensive Logging**: Synchronized timestamps, control commands, sensor data
+- **Autonomous Flight**: Configurable flight patterns and exploration strategies
+- **Real-time Recording**: Video recording with flight info overlays
 - **Domain Randomization**: Weather, lighting, object placement variations
 - **Sim-to-Real Transfer**: Bridging simulation and real-world UAV deployment
 - **Scalable Pipeline**: Designed for 100K+ image generation
 
+## Main Scripts
+
+- **`autonomous_flight_comprehensive.py`** - Main comprehensive flight script with all sensors
+- **`keyboard_control.py`** - Manual keyboard control for drone
+- **`settings_comprehensive.json`** - Full sensor configuration
+- **`run_comprehensive_flight.bat`** - Quick launcher for autonomous flight
+
 ## Documentation
 
 - [Installation Guide](INSTALLATION_GUIDE.md) - Complete setup instructions
+- [Phase 0 README](README_PHASE0.md) - Phase 0 implementation details
+- [Troubleshooting Guide](README_TROUBLESHOOTING.md) - Common issues and solutions
 - AirSim Docs: https://microsoft.github.io/AirSim/
 - Unreal Engine Docs: https://docs.unrealengine.com/4.27/en-US/
 
@@ -125,6 +148,6 @@ Research project - see individual component licenses (AirSim: MIT, Unreal Engine
 
 ---
 
-**Status**: Phase 1 - Installation & Setup
-
-
+**Author**: Md Khairul Islam  
+**Institution**: Hobart and William Smith Colleges, Geneva, NY  
+**Status**: Phase 0 Complete, Phase 1 In Progress
