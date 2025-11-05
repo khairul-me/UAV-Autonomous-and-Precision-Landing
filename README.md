@@ -1,257 +1,153 @@
-# Autonomous Drone Delivery System
-## Author: Md Khairul Islam
-- Institution: Hobart and William Smith Colleges, Geneva, NY
-- Major: Robotics and Computer Science
-- Contact: khairul.islam@hws.edu
+# UAV Synthetic Data Research with Microsoft AirSim
+
+> **Note**: This branch (`airsim-comprehensive-flight`) focuses on AirSim synthetic data generation and autonomous flight research. The `main` branch contains the Autonomous Drone Delivery System project. Both are separate research efforts under the same repository.
+
+Research project for generating large-scale synthetic training datasets using Microsoft AirSim for autonomous UAV systems.
 
 ## Project Overview
 
-This project implements an autonomous drone delivery system capable of precise navigation, vision-based landing, and automated payload delivery. The system uses ArUco markers for precision landing and includes a complete delivery workflow from takeoff to return-to-home.
+**Goal**: Generate 100K+ synthetic images with depth/segmentation data using procedural environment generation and domain randomization for sim-to-real transfer in UAV autonomy.
 
-### System Architecture
+**System Specs**:
+- Windows 10/11
+- NVIDIA RTX 3060 (12GB VRAM)
+- 128GB RAM
+- Python 3.8+
 
-```mermaid
-graph TB
-    A[Ground Control Station] --> B[Drone Control System]
-    B --> C[Vision System]
-    B --> D[Navigation System]
-    B --> E[Payload System]
-    
-    C --> C1[ArUco Detection]
-    C --> C2[Camera Calibration]
-    
-    D --> D1[GPS Navigation]
-    D --> D2[Precision Landing]
-    
-    E --> E1[Servo Control]
-    E --> E2[Payload Release]
+## Quick Start
+
+### For First-Time Installation (Recommended)
+
+**Start here:** Follow the step-by-step walkthrough for installing pre-built binaries:
+
+1. **Read Installation Walkthrough**
+   ```powershell
+   # Open and follow: INSTALLATION_WALKTHROUGH.md
+   # This provides detailed step-by-step instructions
+   ```
+
+2. **Quick Verification**
+   ```powershell
+   .\quick_start.ps1
+   ```
+
+3. **Install AirSim Binaries**
+   - Download from: https://github.com/microsoft/AirSim/releases
+   - Extract `AirSim.zip` to `E:\Drone\AirSim`
+   - Extract `Blocks.zip` to `E:\Drone\AirSim\Blocks`
+
+4. **Setup Python Environment**
+   ```powershell
+   .\setup_airsim.ps1
+   ```
+
+5. **Launch Blocks Environment**
+   - Navigate to `E:\Drone\AirSim\Blocks`
+   - Run `Blocks.exe` (keep it running)
+
+6. **Test Installation**
+   ```powershell
+   # In a NEW terminal window:
+   cd E:\Drone
+   .\venv\Scripts\Activate.ps1
+   python test_airsim.py
+   ```
+
+### Installation Guides Available
+
+- **`INSTALLATION_WALKTHROUGH.md`** - Step-by-step guide for pre-built binaries (START HERE)
+- **`INSTALLATION_GUIDE.md`** - Comprehensive guide including source build options
+
+## Project Structure
+
+```
+E:\Drone\
+├── INSTALLATION_GUIDE.md    # Detailed installation instructions
+├── requirements.txt          # Python dependencies
+├── setup_airsim.ps1         # Automated setup script
+├── test_airsim.py           # Installation validation
+├── AirSim\                  # AirSim binaries/source
+├── Blocks\                  # Blocks test environment
+├── venv\                    # Python virtual environment
+├── data\                    # Generated datasets (created during research)
+├── scripts\                 # Procedural generation scripts
+└── models\                  # Trained models
 ```
 
-### Precision Landing System
+## Research Phases
 
-```mermaid
-graph TD
-    A[High Altitude] --> B{Detect Large Marker}
-    B -->|Found| C[Track 40cm Marker]
-    B -->|Not Found| D[Search Pattern]
-    C --> E{Height < 7m?}
-    E -->|Yes| F[Switch to Small Marker]
-    E -->|No| C
-    F --> G[Track 19cm Marker]
-    G --> H{Landing Complete?}
-    H -->|No| G
-    H -->|Yes| I[Land]
-```
+### Phase 0: AirSim Foundation Setup (COMPLETE ✅)
+- ✅ AirSim installation and configuration
+- ✅ Multi-sensor data capture (RGB, Depth, Segmentation, IMU, GPS, Magnetometer, Barometer)
+- ✅ Comprehensive data logging system
+- ✅ Autonomous flight patterns
+- ✅ Real-time video recording
 
-## System Components
+### Phase 1: Baseline Navigation System (In Progress)
+- Manual control and data collection
+- Vision-based object detection
+- Classical navigation controller
+- Deep RL navigation agent (optional)
 
-### 1. Hardware Requirements
+### Phase 2: Adversarial Attack Implementation
+- Digital attack generation (FGSM, PGD, C&W, UAP)
+- Physical adversarial patch generation
+- Multi-modal attacks
+- Adaptive attacks
 
-#### Drone Platform
-- Flight Controller: Pixhawk/Navio2
-- Companion Computer: Raspberry Pi 4
-- Camera: Raspberry Pi Camera V2
-- GPS: External GPS module
-- Rangefinder: TF Mini Plus/LeddarOne
-- Servo mechanism for payload delivery
+### Phase 3: Defense Implementation
+- Input-level defenses
+- Model-level defenses
+- Multi-sensor fusion (key innovation)
+- Behavioral defenses
 
-#### Ground Station
-- Computer running Linux
-- Radio telemetry system
+## Key Features
 
-### 2. Software Architecture
+- **Synthetic Data Generation**: Automated dataset creation with depth/segmentation
+- **Multi-Sensor Capture**: RGB, Depth, Segmentation, IMU, GPS, Magnetometer, Barometer
+- **Comprehensive Logging**: Synchronized timestamps, control commands, sensor data
+- **Autonomous Flight**: Configurable flight patterns and exploration strategies
+- **Real-time Recording**: Video recording with flight info overlays
+- **Domain Randomization**: Weather, lighting, object placement variations
+- **Sim-to-Real Transfer**: Bridging simulation and real-world UAV deployment
+- **Scalable Pipeline**: Designed for 100K+ image generation
 
-```mermaid
-flowchart LR
-    A[DroneKit] --> B[Vehicle Control]
-    C[OpenCV] --> D[Vision Processing]
-    E[PyMavlink] --> F[Communication]
-    G[ROS] --> H[System Integration]
-    
-    B --> I[Main Control Loop]
-    D --> I
-    F --> I
-    H --> I
-```
+## Main Scripts
 
-### 3. Vision System
+- **`autonomous_flight_comprehensive.py`** - Main comprehensive flight script with all sensors
+- **`keyboard_control.py`** - Manual keyboard control for drone
+- **`settings_comprehensive.json`** - Full sensor configuration
+- **`run_comprehensive_flight.bat`** - Quick launcher for autonomous flight
 
-#### ArUco Marker Configuration
-- High Altitude Marker:
-  * ID: 129
-  * Size: 40cm
-  * Usage: Initial approach
-- Low Altitude Marker:
-  * ID: 72
-  * Size: 19cm
-  * Usage: Precision landing
+## Documentation
 
-#### Camera Setup
-```python
-Camera Parameters:
-- Resolution: 640x480
-- FOV: 62.2° horizontal, 48.8° vertical
-- Calibrated using OpenCV
-```
+- [Installation Guide](INSTALLATION_GUIDE.md) - Complete setup instructions
+- [Phase 0 README](README_PHASE0.md) - Phase 0 implementation details
+- [Troubleshooting Guide](README_TROUBLESHOOTING.md) - Common issues and solutions
+- AirSim Docs: https://microsoft.github.io/AirSim/
+- Unreal Engine Docs: https://docs.unrealengine.com/4.27/en-US/
 
-## Software Components
+## Requirements
 
-### Core Scripts
-
-1. **arm_test.py**
-   - Basic vehicle arming
-   - Mode switching
-   - Connection testing
-
-2. **control_servo.py**
-   - Payload mechanism control
-   - PWM signal management
-   - Servo positioning
-
-3. **precision_landing_single_aruco.py**
-   - Single marker detection
-   - Basic landing sequence
-   - Vision processing
-
-4. **precision_landing_double_aruco.py**
-   - Dual marker system
-   - Altitude-based switching
-   - Enhanced precision
-
-5. **taco_delivery.py**
-   - Complete delivery workflow
-   - Navigation control
-   - Payload management
-
-### Delivery Workflow
-
-```mermaid
-sequenceDiagram
-    participant GCS as Ground Station
-    participant Drone
-    participant Vision
-    participant Payload
-    
-    GCS->>Drone: Initialize Mission
-    Drone->>Drone: Takeoff
-    Drone->>Drone: Navigate to Delivery Point
-    Drone->>Vision: Start Marker Detection
-    Vision->>Drone: Provide Landing Guidance
-    Drone->>Drone: Execute Precision Landing
-    Drone->>Payload: Release Payload
-    Drone->>Drone: Return to Home
-    Drone->>GCS: Mission Complete
-```
-
-## Installation
-
-### 1. Environment Setup
-```bash
-# Create virtual environment
-python -m venv drone_env
-source drone_env/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 2. Camera Calibration
-1. Print calibration pattern
-2. Run calibration script
-3. Save calibration files to `/home/pi/video2calibration/calibrationFiles/`
-
-### 3. ArUco Marker Setup
-1. Generate markers using OpenCV
-2. Print at specified sizes
-3. Mount securely at landing zone
-
-## Usage Instructions
-
-### 1. Basic Testing
-```bash
-# Test drone arming and basic controls
-python khairul_test_arm.py
-
-# Test servo mechanism for taco delivery
-python servo_control.py
-
-# Test basic takeoff and landing
-python takeoff_and_land.py
-```
-
-### 2. Precision Landing Test
-```bash
-# Single marker precision landing test
-python precision_landing_single_aruco.py
-
-# Dual marker precision landing test
-python precision_landing_double_aruco.py
-```
-
-### 3. Complete Delivery Mission
-```bash
-# Update coordinates in autonomous_taco_delivery.py
-python autonomous_taco_delivery.py
-```
-
-## Safety Features
-
-### Emergency Procedures
-```mermaid
-graph TD
-    A[Emergency Detected] --> B{Type?}
-    B -->|Signal Loss| C[Return to Home]
-    B -->|Low Battery| D[Emergency Landing]
-    B -->|Vision Failure| E[Switch to GPS]
-    C --> F[Mission Abort]
-    D --> F
-    E --> F
-```
-
-### Failsafes
-1. Return-to-Home capability
-2. Battery monitoring
-3. Signal strength checking
-4. Altitude limitations
-5. Geofencing
-
-## Troubleshooting
-
-### Common Issues and Solutions
-1. **Marker Detection Failures**
-   - Check lighting conditions
-   - Verify marker printing quality
-   - Confirm camera focus
-
-2. **Navigation Errors**
-   - Verify GPS signal quality
-   - Check compass calibration
-   - Confirm waypoint coordinates
-
-3. **Payload Issues**
-   - Test servo movement range
-   - Verify PWM settings
-   - Check mechanical alignment
-
-## Future Improvements
-
-1. **Enhanced Vision System**
-   - Multiple marker fusion
-   - Dynamic threshold adjustment
-   - Machine learning integration
-
-2. **Advanced Navigation**
-   - Obstacle avoidance
-   - Dynamic path planning
-   - Weather consideration
-
-3. **System Optimization**
-   - Battery life improvements
-   - Weight reduction
-   - Communication efficiency
+See `requirements.txt` for Python dependencies. Key packages:
+- `airsim` - AirSim Python API
+- `torch` - PyTorch for deep learning
+- `opencv-python` - Image processing
+- `numpy` - Numerical computations
 
 ## Contributing
-Please contact the author for contribution guidelines and permissions.
+
+This is a research project. For issues or questions:
+1. Check AirSim GitHub: https://github.com/microsoft/AirSim
+2. Review installation troubleshooting section
+3. Consult AirSim documentation
 
 ## License
-Academic use only. Contact author for permissions.
+
+Research project - see individual component licenses (AirSim: MIT, Unreal Engine: Epic Games License)
+
+---
+
+**Author**: Md Khairul Islam  
+**Institution**: Hobart and William Smith Colleges, Geneva, NY  
+**Status**: Phase 0 Complete, Phase 1 In Progress
