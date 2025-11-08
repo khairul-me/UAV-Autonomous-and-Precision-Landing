@@ -31,19 +31,19 @@
           "CaptureSettings": [
             {
               "ImageType": 0,
-              "Width": 1920,
-              "Height": 1080,
+              "Width": 640,
+              "Height": 480,
               "TargetGamma": 2.2
             },
             {
-              "ImageType": 2,
-              "Width": 1920,
-              "Height": 1080
+              "ImageType": 1,
+              "Width": 640,
+              "Height": 480
             },
             {
               "ImageType": 5,
-              "Width": 1920,
-              "Height": 1080
+              "Width": 640,
+              "Height": 480
             }
           ]
         },
@@ -83,19 +83,19 @@
     }
   },
   
-  "CameraDefaults": {
-    "CaptureSettings": [
-      {
-        "ImageType": 0,
-        "Width": 1920,
-        "Height": 1080,
-        "FOV_Degrees": 90,
-        "AutoExposureSpeed": 100.0,
-        "AutoExposureBias": 0.0,
-        "AutoExposureMaxBrightness": 0.64,
-        "AutoExposureMinBrightness": 0.03,
-        "MotionBlurAmount": 0.0
-      }
-    ]
-  }
+          "CameraDefaults": {
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 90,
+              "AutoExposureSpeed": 100.0,
+              "AutoExposureBias": 0.0,
+              "AutoExposureMaxBrightness": 0.64,
+              "AutoExposureMinBrightness": 0.03,
+              "MotionBlurAmount": 0.0
+            }
+          ]
+        }
 }

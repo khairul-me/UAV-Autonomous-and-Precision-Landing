@@ -1,0 +1,143 @@
+{
+  "episode_id": 1,
+  "timestamp": "2025-11-08T11:48:20.757615",
+  "metadata": {
+    "goal": [
+      50,
+      30,
+      -5
+    ]
+  },
+  "steps": [
+    {
+      "step": 0,
+      "timestamp": "2025-11-08T11:48:20.757615",
+      "position": [
+        0.0,
+        0.0,
+        -5
+      ],
+      "velocity": [
+        1.0,
+        0.5,
+        0.0
+      ],
+      "orientation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "action": [
+        0.5,
+        0.0,
+        0.0,
+        0.1
+      ],
+      "reward": 0.2,
+      "goal_distance": 40,
+      "closest_obstacle": 10.0,
+      "sensor_health": {
+        "camera": true
+      },
+      "q_values": null,
+      "observation_dim": 0
+    },
+    {
+      "step": 1,
+      "timestamp": "2025-11-08T11:48:20.757615",
+      "position": [
+        1.0,
+        0.5,
+        -5
+      ],
+      "velocity": [
+        1.0,
+        0.5,
+        0.0
+      ],
+      "orientation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "action": [
+        0.5,
+        0.0,
+        0.0,
+        0.1
+      ],
+      "reward": 0.2,
+      "goal_distance": 35,
+      "closest_obstacle": 10.0,
+      "sensor_health": {
+        "camera": true
+      },
+      "q_values": null,
+      "observation_dim": 0
+    },
+    {
+      "step": 2,
+      "timestamp": "2025-11-08T11:48:20.757615",
+      "position": [
+        2.0,
+        1.0,
+        -5
+      ],
+      "velocity": [
+        1.0,
+        0.5,
+        0.0
+      ],
+      "orientation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "action": [
+        0.5,
+        0.0,
+        0.0,
+        0.1
+      ],
+      "reward": 0.2,
+      "goal_distance": 30,
+      "closest_obstacle": 10.0,
+      "sensor_health": {
+        "camera": true
+      },
+      "q_values": null,
+      "observation_dim": 0
+    }
+  ],
+  "summary": {
+    "success": true,
+    "collision": false,
+    "final_distance": 5.0,
+    "total_reward": 0.6,
+    "num_steps": 3,
+    "duration": 0.0
+  },
+  "statistics": {
+    "path_length": 2.2360680103302,
+    "avg_speed": 1.1180340051651,
+    "max_speed": 1.1180340051651,
+    "avg_reward": 0.20000000298023224,
+    "min_goal_distance": 30.0,
+    "closest_obstacle": 10.0,
+    "reward_sum": 0.6000000238418579,
+    "position_range": {
+      "x": [
+        0.0,
+        2.0
+      ],
+      "y": [
+        0.0,
+        1.0
+      ],
+      "z": [
+        -5.0,
+        -5.0
+      ]
+    }
+  }
+}

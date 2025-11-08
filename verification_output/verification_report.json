@@ -1,0 +1,103 @@
+{
+  "timestamp": "2025-11-08T11:48:10.595740",
+  "tests": {
+    "airsim_connection": {
+      "status": "FAILED",
+      "details": {},
+      "errors": [
+        "Retry connection over the limit"
+      ]
+    },
+    "configuration": {
+      "status": "PASSED",
+      "details": {
+        "settings_path": "C:\\Users\\Khairul\\Documents\\AirSim\\settings.json",
+        "vehicles": [
+          "Drone1"
+        ],
+        "num_cameras": 0,
+        "num_sensors": 0
+      },
+      "errors": []
+    },
+    "multi_camera": {
+      "status": "SKIPPED",
+      "details": {},
+      "errors": [
+        "AirSim connection unavailable"
+      ]
+    },
+    "feature_extraction": {
+      "status": "SKIPPED",
+      "details": {},
+      "errors": [
+        "MultiCameraManager unavailable"
+      ]
+    },
+    "observation_builder": {
+      "status": "SKIPPED",
+      "details": {},
+      "errors": [
+        "Prerequisite components unavailable"
+      ]
+    },
+    "logging_system": {
+      "status": "PASSED",
+      "details": {
+        "episode_logger": "OK",
+        "training_logger": "OK",
+        "attack_logger": "OK"
+      },
+      "errors": []
+    },
+    "obstacle_generation": {
+      "status": "SKIPPED",
+      "details": {},
+      "errors": [
+        "AirSim connection unavailable"
+      ]
+    },
+    "file_structure": {
+      "status": "PASSED",
+      "details": {
+        "found": {
+          "utils/multi_camera.py": {
+            "size": 13617,
+            "description": "Multi-camera manager"
+          },
+          "environments/observations.py": {
+            "size": 14647,
+            "description": "Observation builder"
+          },
+          "utils/episode_logger.py": {
+            "size": 14941,
+            "description": "Logging system"
+          },
+          "utils/training_monitor.py": {
+            "size": 13120,
+            "description": "Training monitor"
+          },
+          "environments/advanced_obstacles.py": {
+            "size": 9962,
+            "description": "Advanced obstacle generator"
+          },
+          "train_enhanced.py": {
+            "size": 19246,
+            "description": "Enhanced training script"
+          }
+        },
+        "missing": [],
+        "coverage": "6/6"
+      },
+      "errors": []
+    }
+  },
+  "summary": {
+    "total_tests": 8,
+    "passed": 3,
+    "failed": 1,
+    "skipped": 4,
+    "partial": 0,
+    "success_rate": 37.5
+  }
+}

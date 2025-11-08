@@ -35,4 +35,7 @@ gymnasium>=0.29.0
 scikit-learn>=1.3.0
 scikit-image>=0.21.0
 
+# YOLOv8 for Obstacle Detection (Phase 1)
+ultralytics>=8.0.0
+
 

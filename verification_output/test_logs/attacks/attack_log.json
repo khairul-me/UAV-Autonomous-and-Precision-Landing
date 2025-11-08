@@ -1,0 +1,14 @@
+{
+  "attacks": [
+    {
+      "step": 0,
+      "timestamp": "2025-11-08T11:48:20.759614",
+      "attack_type": "fgsm",
+      "epsilon": 0.03,
+      "success": true,
+      "original_action": [],
+      "attacked_action": [],
+      "perturbation_norm": 0.1
+    }
+  ]
+}
